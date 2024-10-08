@@ -14,7 +14,7 @@ def fetch_fixturedownload_football_uk_premier_league():
         http_conn_id="http_fixturedownload_com",
         endpoint="/feed/json/epl-2024",
         s3_bucket="com-cloudership-prod-eu-north-1-airflow-testing",
-        s3_key="2024/football/uk/premier_league.json",
+        s3_key="2024/football/uk/premier_league-{{ ts }}.json",
         replace=True,
     )
 
