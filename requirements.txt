@@ -1,5 +1,7 @@
 apache-airflow~=2.10.2
-apache-airflow[cryptoapache-airflow-providers-amazon
+apache-airflow[crypto]
+apache-airflow-providers-amazon
 apache-airflow-providers-amazon[s3fs]
 requests
 pendulum~=3.0.0
+pandas
