@@ -1,6 +1,5 @@
 import logging
 
-from airflow import DAG
 from airflow.decorators import dag, task
 from airflow.operators.trigger_dagrun import TriggerDagRunOperator
 from pendulum import datetime
@@ -20,14 +19,18 @@ def noop():
 
 noop()
 
-with DAG(dag_id="trigger_other_dag",
-         schedule=None,
+
+@dag(schedule=None,
          start_date=datetime(2024, 1, 1, tz="UTC"),
          description="Trigger another DAG",
-         catchup=False) as dag:
+     catchup=False)
+def trigger_other_dag():
     TriggerDagRunOperator(
         task_id="trigger_other_dag",
         trigger_dag_id="noop",
-        logical_date="{{ logical_date.subtract(months=3).start_of('month') }}",
+        logical_date="{{ logical_date.subtract(months=2).start_of('month') }}",
         reset_dag_run=True,
     )
+
+
+trigger_other_dag()
