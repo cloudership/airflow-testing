@@ -5,3 +5,4 @@ apache-airflow-providers-amazon[s3fs]
 requests
 pendulum~=3.0.0
 pandas
+numpy
